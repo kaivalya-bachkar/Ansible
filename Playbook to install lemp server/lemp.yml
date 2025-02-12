@@ -1,4 +1,4 @@
-- name: myplay1
+- name: install LEMP on localhost
   hosts: localhost
   become: true
   connection: local
