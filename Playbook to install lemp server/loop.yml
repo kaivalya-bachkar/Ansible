@@ -1,0 +1,30 @@
+- name: myplay
+  hosts: localhost
+  become: true
+  connection: local
+  tasks:
+    - name: install LEMP
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - nginx
+        - php
+        - php8.3-fpm
+        - mariadb-server
+    - name: start all services
+      service:
+        name: "{{ item }}"
+        state: started
+      loop:
+        - nginx
+        - php8.3-fpm
+        - mariadb
+    - name: restart all services
+      service:
+        name: "{{ item }}"
+        state: restarted
+      with_items:
+        - nginx
+        - php8.3-fpm
+        - mariadb
