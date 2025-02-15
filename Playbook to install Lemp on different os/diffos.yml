@@ -1,4 +1,4 @@
-- name: LEMP on Diff OS
+- name: LEMP on Different OS
   hosts: webserver
   become: true
   tasks:
